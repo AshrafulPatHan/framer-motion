@@ -1,25 +1,46 @@
+"use client";
 import * as motion from "motion/react-client"
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 
 export function BasicsMotion() {
+    const [isClick,setIsClick] = useState(false);
     return(
-        <div className="flex justify-center items-center h-screen w-screen ">
-            <motion.div
-            className="w-[120px] h-[120px] bg-amber-200 p-6 "
-            initial={{
-                rotate: "0deg",
-            }}
-            animate={{
-                rotate: "360deg",
-            }}
-            transition={{
-                duration:2,
-                // type:"spring",
-                ease:"backInOut"
-            }}
+        <div className="flex flex-col gap-5 justify-center items-center h-screen w-screen ">
+            <motion.button 
+            className="w-[125px] bg-blue-600 rounded-3xl p-1 cursor-pointer  "
+            onClick={()=>setIsClick(!isClick)}
+            layout
             >
-                <p className="text-center mt-5">motion</p>
-            </motion.div> 
+                click
+            </motion.button>
+            <AnimatePresence 
+            mode="popLayout"
+            >
+            {isClick && (
+                <motion.div
+                className="w-[220px] h-[220px] bg-amber-200 p-6 rounded-2xl "
+                initial={{
+                    rotate: "0deg",
+                }}
+                animate={{
+                    rotate: "360deg",
+                    scale:1
+                }}
+                exit={{
+                    rotate: "0deg"
+                }}
+                transition={{
+                    duration:2,
+                    // type:"spring",
+                    ease:"backInOut"
+                }}
+                >
+                    <p className="text-center mt-[70px]  ">motion</p>
+                </motion.div> 
+            )}
+            </AnimatePresence>
         </div>
     );
 };
