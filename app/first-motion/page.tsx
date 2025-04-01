@@ -1,12 +1,13 @@
+import { BasicsMotion } from "@/components/animation/BasicsMotion";
 
-export function firstMotion() {
+
+export default function firstMotion() {
     return(
         <div>
-            h
+            <BasicsMotion/>
         </div>
     )
 }
-
 
 
 
