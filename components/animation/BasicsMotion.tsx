@@ -26,15 +26,18 @@ export function BasicsMotion() {
                 }}
                 animate={{
                     rotate: "360deg",
-                    scale:1
+                    scale:1,
+                    y:[0,54,-10,0],
+                    x:54
                 }}
                 exit={{
                     rotate: "0deg"
                 }}
                 transition={{
-                    duration:2,
+                    duration:3,
                     // type:"spring",
-                    ease:"backInOut"
+                    ease:"backInOut",
+                    times:[0,0.7,0.5]
                 }}
                 >
                     <p className="text-center mt-[70px]  ">motion</p>
