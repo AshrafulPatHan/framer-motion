@@ -5,6 +5,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center ">
       <Link href="/first-motion" >First-Practice</Link>
+      <Link href="/hooks" >Motion Hooks</Link>
     </div>
   );
 }
