@@ -1,12 +1,29 @@
 "use client";
 import { useAnimationControls } from "framer-motion";
 import * as motion from "motion/react-client"
+import { useState } from "react";
 
 export default function MotionHooks() {
+    const [animation, setAnimation] = useState({});
+
+
     const control = useAnimationControls()
     const handelClick = ()=>{
         console.log("Animation Started!");
         control.start({
+            rotate: "360deg",
+            y: [0, 52, -5, 0],
+            x: [0, 10, -10, 0],
+            transition: {
+                duration: 2,
+                ease: "easeInOut",
+                times: [0, 0.5, 0.7, 1]
+            }
+        });
+    }
+    const handelClick2 = ()=>{
+        console.log("Animation Started!");
+        setAnimation({
             rotate: "360deg",
             y: [0, 52, -5, 0],
             x: [0, 10, -10, 0],
@@ -33,6 +50,22 @@ export default function MotionHooks() {
             animate={control}
             exit="exit"
             ></motion.div>
+            <div className="flex flex-col items-center gap-5 justify-center my-20 mb-20">
+                <motion.button
+                    className="w-[125px] bg-blue-600 rounded-3xl p-1 cursor-pointer  "
+                    onClick={handelClick2}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                >
+                    click
+                </motion.button>
+                <motion.div
+                    className="w-[220px] h-[220px] bg-sky-200 p-6 rounded-2xl "
+                    initial={{ rotate: 0, y: 0, x: 0 }}
+                    animate={animation}
+                    exit="exit"
+                ></motion.div>
+            </div>
         </div>
     )
 }
