@@ -34,6 +34,7 @@ export default function MotionHooks() {
             }
         });
     }
+    
     return(
         <div className="flex flex-col items-center gap-5 justify-center my-20 mb-20">
             <motion.button
